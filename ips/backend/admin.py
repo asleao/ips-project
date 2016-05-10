@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Categoria,Credencial,Ferramenta,Projeto,Papel,Habilidade,Organizacao,Pessoa,PessoaProjeto,PessoaPapel
+from .models import Categoria,Credencial,Ferramenta,Projeto,Papel,Habilidade,Organizacao,Pessoa,PessoaProjeto
 
 
 admin.site.register(Categoria)
@@ -11,6 +11,3 @@ admin.site.register(Habilidade)
 admin.site.register(Organizacao)
 admin.site.register(Pessoa)
 admin.site.register(PessoaProjeto)
-admin.site.register(PessoaPapel)
-
-

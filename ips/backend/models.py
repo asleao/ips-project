@@ -71,20 +71,6 @@ class Projeto(models.Model):
     def __str__(self):
         return self.nome
 
-class PessoaPapel(models.Model):    
-    pessoa=models.ForeignKey(
-        Pessoa,
-        on_delete=models.CASCADE,
-        null=True
-        )
-    papel=models.ForeignKey(
-        Papel,
-        on_delete=models.CASCADE,
-        null=True
-        )
-    def __str__(self):
-        return self.projeto.nome
-
 class PessoaProjeto(models.Model):
    projeto=models.ForeignKey(
        Projeto,
