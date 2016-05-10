@@ -1,0 +1,56 @@
+from rest_framework import serializers
+from django.contrib.auth.models import User
+from .models import Categoria,Credencial,Ferramenta,Projeto,Papel,Habilidade,Organizacao,Pessoa,PessoaProjeto,PessoaPapel
+
+class CategoriaSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Categoria
+        fields = ('id', 'nome')
+
+class CredencialSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Credencial
+        fields = ('id', 'usuario','senha')
+
+class FerramentaSerializer(serializers.ModelSerializer):
+    credencial =   Credencial() 
+    categoria =   Categoria() 
+    class Meta:
+        model = Ferramenta
+        fields = ('id', 'nome','link','categoria','credencial')        
+
+class PapelSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Papel
+        fields = ('id', 'nome')
+
+class HabilidadeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Habilidade
+        fields = ('id', 'descricao')
+
+class OrganizacaoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Organizacao
+        fields = ('id', 'nome')
+
+class PessoaSerializer(serializers.ModelSerializer):
+    habilidade =   Habilidade() 
+    organizacao =   Organizacao() 
+    class Meta:
+        model = Pessoa
+        fields = ('id', 'nome','email','cpf','habilidade','organizacao')  
+
+class ProjetoSerializer(serializers.ModelSerializer):
+    ferramenta =   Ferramenta()     
+    class Meta:
+        model = Projeto
+        fields = ('id', 'nome','descricao','dataInicio','duracao','ferramenta')          
+
+class PessoaProjetoSerializer(serializers.ModelSerializer):
+    projeto =   Projeto()     
+    pessoa =   Pessoa()
+    papel =   Papel()
+    class Meta:
+        model = PessoaProjeto
+        fields = ('id', 'projeto','pessoa','papel')                
