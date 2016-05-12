@@ -157,6 +157,6 @@ CORS_ALLOW_METHODS = (
         'OPTIONS'
     )
 
-CORS_URLS_REGEX = r'^/ips/.*$'
+CORS_URLS_REGEX = r'^/backend/.*$'
 
 CORS_ORIGIN_ALLOW_ALL = True

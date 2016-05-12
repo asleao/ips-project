@@ -1,0 +1,24 @@
+<div class="container ">
+        <h4 class="left" ><strong>Login</strong></h4>
+        <div class="row">
+            <form class="col s12" name="formLogin">                     
+                      <div class="row">
+                                <div class="input-field col s6">
+                                         <i class="material-icons prefix">account_circle</i>
+                                          <input id="username" type="text" class="validate" placeholder="Username" ng-model="usuario.username" ng-required = "true">
+                                          <label for="username"> Username</label>
+                                </div>
+                      </div>                                     
+                      <div class="row">
+                                <div class="input-field col s12">
+                                          <i class="material-icons prefix">lock</i>
+                                          <input id="password" type="password" class="validate" name="password"  placeholder="Senha" ng-model="usuario.password" ng-required = "true">
+                                          <label for="password">Senha</label>
+                                </div>
+                      </div>                      
+                      <button class="btn waves-effect waves-light right grey darken-4" type="submit" name="action" ng-click="login(usuario)" ng-disabled="formLogin.$invalid">Enviar
+                                <i class="material-icons right">send</i>
+                      </button>                      
+            </form>
+        </div>
+</div>     
