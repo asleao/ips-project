@@ -7,4 +7,8 @@ angular.module("ipsProject").service("categoriasAPI",function($http, config){
     this.getCategoria = function(id){
         return $http.get(config.baseUrl + "/categoria/"+id+"/?format=json");
     };
+
+     this.postCadastrarCategoria = function(categoria){
+        return $http.post(config.baseUrl +"/categoria/?format=json",categoria);
+    };   
 });

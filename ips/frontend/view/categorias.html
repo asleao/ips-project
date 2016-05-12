@@ -1,0 +1,17 @@
+<div class = "categoriaContainer">   
+        <table class="bordered highlight centered responsive-table">
+        <thead>
+          <tr>
+              <th data-field="id">Id</th>
+              <th data-field="name">Nome</th>              
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="categoria in categorias">
+            <td>{{categoria.id}}</td>
+            <td>{{categoria.nome}}</td>            
+          </tr>         
+        </tbody>
+      </table>
+       <a class="btn-floating btn-large waves-effect waves-light red right" href="#/cadastrocategoria"><i class="material-icons">add</i></a>    
+</div>

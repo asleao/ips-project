@@ -5,13 +5,11 @@ from .models import Categoria,Pessoa
 from rest_framework import permissions
 from .permissions import IsOwnerOrReadOnly
 
-class CategoriaList(generics.ListCreateAPIView):
-    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
+class CategoriaList(generics.ListCreateAPIView):    
     queryset = Categoria.objects.all()
     serializer_class = CategoriaSerializer
 
-class CategoriaDetail(generics.RetrieveUpdateDestroyAPIView):
-    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
+class CategoriaDetail(generics.RetrieveUpdateDestroyAPIView):    
     queryset = Categoria.objects.all()
     serializer_class = CategoriaSerializer
 

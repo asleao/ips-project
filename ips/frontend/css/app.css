@@ -4,11 +4,10 @@ body {
 }
 .logo {
   font-family: 'Cookie', cursive;
-  font-size: 38px !important;
-  color: #FF853B;
+  font-size: 38px !important;  
   margin-top: 3px;
   margin-bottom: 3px;
 }
 .logo:hover, .logo:visited, .logo:active {
-  color: #FF853B;
+  color: #9e9e9e;
 }
