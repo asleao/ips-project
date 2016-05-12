@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from rest_framework import generics
-from .serializers import CategoriaSerializer,PessoaSerializer,UserSerializer
-from .models import Categoria,Pessoa
+from .serializers import CategoriaSerializer,PessoaSerializer,UserSerializer,FerramentaSerializer
+from .models import Categoria,Pessoa,Ferramenta
 from django.contrib.auth.models import User
 from rest_framework import permissions
 from .permissions import IsOwnerOrReadOnly
@@ -15,6 +15,14 @@ class CategoriaList(generics.ListCreateAPIView):
 class CategoriaDetail(generics.RetrieveUpdateDestroyAPIView):    
     queryset = Categoria.objects.all()
     serializer_class = CategoriaSerializer
+
+class FerramentaList(generics.ListCreateAPIView):    
+    queryset = Ferramenta.objects.all()
+    serializer_class = FerramentaSerializer
+
+class FerramentaDetail(generics.RetrieveUpdateDestroyAPIView):    
+    queryset = Ferramenta.objects.all()
+    serializer_class = FerramentaSerializer
 
 class PessoaList(generics.ListCreateAPIView):    
     queryset = Pessoa.objects.all()
