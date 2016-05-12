@@ -51,7 +51,7 @@ class Organizacao(models.Model):
     def __str__(self):
         return self.nome
 
-class Pessoa(models.Model):
+class Pessoa(models.Model):      
     nome = models.CharField(max_length=20, null=True, unique=True)    
     email = models.EmailField(max_length=20, null=True, unique=True) 
     cpf = models.CharField(max_length=20, null=True, unique=True)

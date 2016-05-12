@@ -7,7 +7,9 @@ urlpatterns = [
         url(r'^categoria/(?P<pk>[0-9]+)/$',views.CategoriaDetail.as_view()), 
         url(r'^pessoas/$', views.PessoaList.as_view()),
         url(r'^pessoas/(?P<pk>[0-9]+)/$', views.PessoaDetail.as_view()),
-        url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),       
+        url(r'^users/$', views.UserList.as_view()),
+        url(r'^users/(?P<pk>[0-9]+)/$', views.UserDetail.as_view()),
+        url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))       
 ] 
 
 urlpatterns = format_suffix_patterns(urlpatterns)
