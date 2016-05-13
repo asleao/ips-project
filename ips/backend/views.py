@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from rest_framework import generics
-from .serializers import CategoriaSerializer,PessoaSerializer,UserSerializer,FerramentaSerializer
-from .models import Categoria,Pessoa,Ferramenta
+from .serializers import CategoriaSerializer,PessoaSerializer,UserSerializer,FerramentaSerializer,HabilidadeSerializer,OrganizacaoSerializer
+from .models import Categoria,Pessoa,Ferramenta,Habilidade,Organizacao
 from django.contrib.auth.models import User
 from rest_framework import permissions
 from .permissions import IsOwnerOrReadOnly
@@ -83,3 +83,39 @@ class UserDetail(generics.RetrieveAPIView):
     permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
     queryset = User.objects.all()
     serializer_class = UserSerializer  
+
+class HabilidadeList(generics.ListCreateAPIView):    
+    queryset = Habilidade.objects.all()
+    serializer_class = HabilidadeSerializer
+    authentication_classes = (SessionAuthentication, BasicAuthentication)
+
+    def get_permissions(self):
+        if self.request.method in permissions.SAFE_METHODS:
+            return (permissions.AllowAny(),)
+
+        if self.request.method == 'POST':
+            return (permissions.AllowAny(),)
+
+        return (permissions.IsAuthenticated(),)   
+
+class HabilidadeDetail(generics.RetrieveUpdateDestroyAPIView):    
+    queryset = Habilidade.objects.all()
+    serializer_class = HabilidadeSerializer
+
+class OrganizacaoList(generics.ListCreateAPIView):    
+    queryset = Organizacao.objects.all()
+    serializer_class = OrganizacaoSerializer
+    authentication_classes = (SessionAuthentication, BasicAuthentication)
+
+    def get_permissions(self):
+        if self.request.method in permissions.SAFE_METHODS:
+            return (permissions.AllowAny(),)
+
+        if self.request.method == 'POST':
+            return (permissions.AllowAny(),)
+
+        return (permissions.IsAuthenticated(),)   
+
+class OrganizacaoDetail(generics.RetrieveUpdateDestroyAPIView):    
+    queryset = Organizacao.objects.all()
+    serializer_class = OrganizacaoSerializer
