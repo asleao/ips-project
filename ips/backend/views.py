@@ -29,6 +29,16 @@ class CategoriaDetail(generics.RetrieveUpdateDestroyAPIView):
 class FerramentaList(generics.ListCreateAPIView):    
     queryset = Ferramenta.objects.all()
     serializer_class = FerramentaSerializer
+    authentication_classes = (SessionAuthentication, BasicAuthentication)
+
+    def get_permissions(self):
+        if self.request.method in permissions.SAFE_METHODS:
+            return (permissions.AllowAny(),)
+
+        if self.request.method == 'POST':
+            return (permissions.AllowAny(),)
+
+        return (permissions.IsAuthenticated(),)   
 
 class FerramentaDetail(generics.RetrieveUpdateDestroyAPIView):    
     queryset = Ferramenta.objects.all()
