@@ -11,6 +11,16 @@ from django.contrib.auth import authenticate
 class CategoriaList(generics.ListCreateAPIView):    
     queryset = Categoria.objects.all()
     serializer_class = CategoriaSerializer
+    authentication_classes = (SessionAuthentication, BasicAuthentication)
+
+    def get_permissions(self):
+        if self.request.method in permissions.SAFE_METHODS:
+            return (permissions.AllowAny(),)
+
+        if self.request.method == 'POST':
+            return (permissions.AllowAny(),)
+
+        return (permissions.IsAuthenticated(),)   
 
 class CategoriaDetail(generics.RetrieveUpdateDestroyAPIView):    
     queryset = Categoria.objects.all()
@@ -27,6 +37,7 @@ class FerramentaDetail(generics.RetrieveUpdateDestroyAPIView):
 class PessoaList(generics.ListCreateAPIView):    
     queryset = Pessoa.objects.all()
     serializer_class = PessoaSerializer        
+    authentication_classes = (SessionAuthentication, BasicAuthentication)
 
     def get_permissions(self):
         if self.request.method in permissions.SAFE_METHODS:
@@ -35,7 +46,7 @@ class PessoaList(generics.ListCreateAPIView):
         if self.request.method == 'POST':
             return (permissions.AllowAny(),)
 
-        return (permissions.IsAuthenticated(), IsReceitaOwner(),)     
+        return (permissions.IsAuthenticated(),)     
 
 
 class PessoaDetail(generics.RetrieveAPIView):
@@ -55,7 +66,7 @@ class UserList(generics.ListCreateAPIView):
         if self.request.method == 'POST':
             return (permissions.AllowAny(),)
 
-        return (permissions.IsAuthenticated(), IsReceitaOwner(),)     
+        return (permissions.IsAuthenticated(),)     
 
 
 class UserDetail(generics.RetrieveAPIView):
