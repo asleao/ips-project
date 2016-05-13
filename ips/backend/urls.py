@@ -11,6 +11,8 @@ urlpatterns = [
         url(r'^habilidade/(?P<pk>[0-9]+)/$',views.HabilidadeDetail.as_view()), 
         url(r'^organizacao/$',views.OrganizacaoList.as_view()),
         url(r'^organizacao/(?P<pk>[0-9]+)/$',views.OrganizacaoDetail.as_view()), 
+         url(r'^projeto/$',views.ProjetoList.as_view()),
+        url(r'^projeto/(?P<pk>[0-9]+)/$',views.ProjetoDetail.as_view()), 
         url(r'^pessoas/$', views.PessoaList.as_view()),
         url(r'^pessoas/(?P<pk>[0-9]+)/$', views.PessoaDetail.as_view()),
         url(r'^users/$', views.UserList.as_view()),

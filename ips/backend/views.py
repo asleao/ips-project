@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from rest_framework import generics
-from .serializers import CategoriaSerializer,PessoaSerializer,UserSerializer,FerramentaSerializer,HabilidadeSerializer,OrganizacaoSerializer
-from .models import Categoria,Pessoa,Ferramenta,Habilidade,Organizacao
+from .serializers import CategoriaSerializer,PessoaSerializer,UserSerializer,FerramentaSerializer,HabilidadeSerializer,OrganizacaoSerializer,ProjetoSerializer
+from .models import Categoria,Pessoa,Ferramenta,Habilidade,Organizacao,Projeto
 from django.contrib.auth.models import User
 from rest_framework import permissions
 from .permissions import IsOwnerOrReadOnly
@@ -119,3 +119,21 @@ class OrganizacaoList(generics.ListCreateAPIView):
 class OrganizacaoDetail(generics.RetrieveUpdateDestroyAPIView):    
     queryset = Organizacao.objects.all()
     serializer_class = OrganizacaoSerializer
+
+class ProjetoList(generics.ListCreateAPIView):    
+    queryset = Projeto.objects.all()
+    serializer_class = ProjetoSerializer
+    authentication_classes = (SessionAuthentication, BasicAuthentication)
+
+    def get_permissions(self):
+        if self.request.method in permissions.SAFE_METHODS:
+            return (permissions.AllowAny(),)
+
+        if self.request.method == 'POST':
+            return (permissions.AllowAny(),)
+
+        return (permissions.IsAuthenticated(),)   
+
+class ProjetoDetail(generics.RetrieveUpdateDestroyAPIView):    
+    queryset = Projeto.objects.all()
+    serializer_class = ProjetoSerializer
