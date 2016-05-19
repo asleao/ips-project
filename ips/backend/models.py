@@ -1,5 +1,5 @@
 from __future__ import unicode_literals
-
+from django.contrib.auth.models import User
 from django.db import models
 from django.utils import timezone
 
@@ -22,12 +22,14 @@ class Ferramenta(models.Model):
     categoria=models.ForeignKey(
         Categoria,
         on_delete=models.CASCADE,
-        null=True
+        null=True,
+        related_name='categoria_id'
         ) 
     credencial=models.ForeignKey(
         Credencial,
         on_delete=models.CASCADE,
-        null=True
+        null=True,
+        related_name='credencial_id'
         ) 
     def __str__(self):
         return self.nome

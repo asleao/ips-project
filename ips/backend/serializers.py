@@ -27,8 +27,8 @@ class CredencialSerializer(serializers.ModelSerializer):
         fields = ('id', 'usuario','senha')
 
 class FerramentaSerializer(serializers.ModelSerializer):
-    credencial =   Credencial() 
-    categoria =   Categoria() 
+    credencial =   serializers.PrimaryKeyRelatedField(many=False, read_only=True)
+    categoria =   serializers.PrimaryKeyRelatedField(many=False, read_only=True) 
     class Meta:
         model = Ferramenta
         fields = ('id', 'nome','link','categoria','credencial')        

@@ -76,7 +76,7 @@ class UserList(generics.ListCreateAPIView):
         if self.request.method == 'POST':
             return (permissions.AllowAny(),)
 
-        return (permissions.IsAuthenticated(),)     
+        return (permissions.IsAuthenticated(),)             
 
 
 class UserDetail(generics.RetrieveAPIView):
