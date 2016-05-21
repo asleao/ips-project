@@ -20,8 +20,7 @@ Baixe o projeto clicando em **"Download Zip"** ou, caso possua o git instalado, 
 
 Entre, pelo terminal, na pasta do projeto extraída. Em seguida execute o comando:
 
-Linux: `Virtualenv virtual`
-Windows: `python -m venv virtual`
+`virtualenv virtual`
 
 Este comando criará uma pasta "virtual" no seu projeto com o ambiente virtual do Python. O nome "virtual" pode ser substituído por qualquer um de sua preferência. Em seguida, para ativa-lo digite o comando:
 
