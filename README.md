@@ -1,6 +1,6 @@
 #**Bem vindo!** 
 
-Este repositório contém um sistema IPS que foi implementado como trabalho da disciplina de Programação Orientada a Objetos 2. 
+Este repositório contém o backend do sistema IPS que foi implementado como trabalho da disciplina de Programação Orientada a Objetos 2. 
 
 ###**Pré-requisitos:**
 
