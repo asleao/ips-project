@@ -2,7 +2,9 @@ from django.conf.urls import url,include
 from rest_framework.urlpatterns import format_suffix_patterns 
 from backend import views
 
-urlpatterns = [       
+urlpatterns = [      
+        url(r'^credencial/$',views.CredencialList.as_view()),
+        url(r'^credencial/(?P<pk>[0-9]+)/$',views.CredencialDetail.as_view()),  
         url(r'^categoria/$',views.CategoriaList.as_view()),
         url(r'^categoria/(?P<pk>[0-9]+)/$',views.CategoriaDetail.as_view()), 
         url(r'^ferramenta/$',views.FerramentaList.as_view()),

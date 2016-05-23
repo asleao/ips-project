@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from rest_framework import generics
-from .serializers import CategoriaSerializer,PessoaSerializer,UserSerializer,FerramentaSerializer,HabilidadeSerializer,OrganizacaoSerializer,ProjetoSerializer
-from .models import Categoria,Pessoa,Ferramenta,Habilidade,Organizacao,Projeto
+from .serializers import CategoriaSerializer,PessoaSerializer,UserSerializer,FerramentaSerializer,HabilidadeSerializer,OrganizacaoSerializer,ProjetoSerializer,CredencialSerializer
+from .models import Categoria,Pessoa,Ferramenta,Habilidade,Organizacao,Projeto,Credencial
 from django.contrib.auth.models import User
 from rest_framework import permissions
 from .permissions import IsOwnerOrReadOnly
@@ -25,6 +25,24 @@ class CategoriaList(generics.ListCreateAPIView):
 class CategoriaDetail(generics.RetrieveUpdateDestroyAPIView):    
     queryset = Categoria.objects.all()
     serializer_class = CategoriaSerializer
+
+class CredencialList(generics.ListCreateAPIView):    
+    queryset = Credencial.objects.all()
+    serializer_class = CredencialSerializer
+    authentication_classes = (SessionAuthentication, BasicAuthentication)
+
+    def get_permissions(self):
+        if self.request.method in permissions.SAFE_METHODS:
+            return (permissions.AllowAny(),)
+
+        if self.request.method == 'POST':
+            return (permissions.AllowAny(),)
+
+        return (permissions.IsAuthenticated(),)   
+
+class CredencialDetail(generics.RetrieveUpdateDestroyAPIView):    
+    queryset = Credencial.objects.all()
+    serializer_class = CredencialSerializer
 
 class FerramentaList(generics.ListCreateAPIView):    
     queryset = Ferramenta.objects.all()
